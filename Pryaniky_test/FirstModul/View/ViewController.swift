@@ -139,10 +139,9 @@ final class ViewController: UIViewController, DropperDelegate {
     }
     
     @objc func selectorButtonPressed() {
+        let stringArray = viewModel.selectorArray.map { String($0) }
         if dropper.status == .hidden {
-            dropper.items = [String(describing: viewModel.selectorArray[0]),
-                             String(describing: viewModel.selectorArray[1]),
-                             String(describing: viewModel.selectorArray[2])]
+            dropper.items = stringArray
             dropper.theme = Dropper.Themes.white
             dropper.delegate = self
             dropper.cornerRadius = 3
@@ -153,7 +152,6 @@ final class ViewController: UIViewController, DropperDelegate {
     }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        //let tappedImage = tapGestureRecognizer.view as! UIImageView
         print("text: \(String(describing: viewModel.dataService.datum[1].data.text ?? "No text"))")
     }
     
